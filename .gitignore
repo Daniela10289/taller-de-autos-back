@@ -148,6 +148,7 @@ dist
 **/*.back.*
 
 node_modules
+postgres_data
 
 *.sublime*
 
