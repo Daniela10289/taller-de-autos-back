@@ -46,8 +46,8 @@ class Car extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: USER_TABLE,
-      modelName: 'User',
+      tableName: CAR_TABLE,
+      modelName: 'Car',
       timestamps: false
     }
   }

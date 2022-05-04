@@ -1,12 +1,12 @@
 const express = require('express');
 const routerApi = require('./routes');
 const cors = require('cors');
-const { checkApiKey } = require( './middlewares/authHandler');
 
 const app = express();
 const port = process.env.PORT || 8080;
 app.use(express.json());
 
+const whitelist = ['http://localhost:8080', 'https://mytaller.co'];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
@@ -19,7 +19,7 @@ const options = {
 
 app.use(cors(options));
  
-// require('./utils/auth');
+require('./utils/auth');
 
 app.get('/', (req, res) => {
     res.send('Server en express');

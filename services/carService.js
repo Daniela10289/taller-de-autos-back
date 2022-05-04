@@ -1,30 +1,16 @@
 const boom = require('@hapi/boom');
-const bcrypt = require('bcrypt');
-
 const { models } = require('./../libs/sequelize');
 
 class CarService {
   constructor() {}
 
   async create(data) {
-    const hash = await bcrypt.hash(data.password, 10);
-    const newCar = await models.Car.create({
-      ...data,
-      password: hash
-    });
-    delete newCar.dataValues.password;
+    const newCar = await models.Car.create(data);
     return newCar;
   }
 
   async find() {
     const rta = await models.Car.findAll();
-    return rta;
-  }
-
-  async findByEmail(email) {
-    const rta = await models.Car.findOne({
-      where: { email }
-    });
     return rta;
   }
 
